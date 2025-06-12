@@ -10,6 +10,8 @@ class RandomSearch {
     private boolean[] bestSolution;
     private int bestFitness;
 
+    private final Random random = new Random();
+
     public RandomSearch(int problemSize, int maxIterations) {
         if (problemSize < 1) {
             throw new IllegalArgumentException("Problem size n must be above zero.");
@@ -31,12 +33,11 @@ class RandomSearch {
     }
 
     void run() {
-        for (int i = 0; i < maxIterations; i++) {
+        for (currentIteration = 0; currentIteration < maxIterations; currentIteration++) {
             if (bestFitness == problemSize){
                 System.out.println("BEST SOLUTION FOUND!");
                 break;
             }
-            currentIteration++;
             randomizeCurrentSolution();
             int sum = calcCurrentFitness();
             if (sum > bestFitness) {
@@ -45,12 +46,12 @@ class RandomSearch {
             }
             System.out.println(this);
         }
-        System.out.println("RandomSearch{" + "bestSolution=" + Arrays.toString(bestSolution));
+        System.out.println("RandomSearch{" + "bestSolution=" + Arrays.toString(bestSolution) + "}");
     }
 
     private void randomizeCurrentSolution() {
         for (int i = 0; i < currentSolution.length; i++) {
-            currentSolution[i] = new Random().nextBoolean();
+            currentSolution[i] = random.nextBoolean();
         }
     }
 
