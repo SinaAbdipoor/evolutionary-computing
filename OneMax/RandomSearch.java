@@ -28,6 +28,18 @@ class RandomSearch {
         return count;
     }
 
+    int run() {
+        while (currentIteration < maxIterations) {
+            if (bestFitness == bestSolution.length) { // Check if the best solution is found
+                System.out.println("Best solution Found!");
+                return currentIteration;
+            }
+            randomSearch(); // Run 1 iteration of random search
+            System.out.println(this);
+        }
+        return -1; // Best solution not found
+    }
+
     private void randomSearch() {
         boolean[] newSolution = new boolean[bestSolution.length];
         // Step 1: Increase the iteration count
@@ -42,17 +54,5 @@ class RandomSearch {
             bestFitness = newFitness;
             bestSolution = Arrays.copyOf(newSolution, newSolution.length);
         }
-    }
-
-    int run() {
-        while (currentIteration < maxIterations) {
-            if (bestFitness == bestSolution.length) { // Check if the best solution is found
-                System.out.println("Best solution Found!");
-                return currentIteration;
-            }
-            randomSearch(); // Run 1 iteration of random search
-            System.out.println(this);
-        }
-        return -1; // Best solution not found
     }
 }
