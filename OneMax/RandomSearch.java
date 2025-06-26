@@ -2,63 +2,61 @@ import java.util.Arrays;
 import java.util.Random;
 
 class RandomSearch {
-    private final int problemSize; //The size of the problem, which is the length of the boolean array.
-    private final int maxIterations; //The maximum allowed number of iterations, which, in this case, is actually the same as the Number of Fitness Evaluations (NFE).
-
+    private final int maxIterations;
     private int currentIteration;
-    private final boolean[] currentSolution;
     private boolean[] bestSolution;
     private int bestFitness;
-
     private final Random random = new Random();
 
     public RandomSearch(int problemSize, int maxIterations) {
         if (problemSize < 1) {
-            throw new IllegalArgumentException("Problem size n must be above zero.");
+            throw new IllegalArgumentException("Problem size (n) must be above zero.");
         }
-        this.problemSize = problemSize;
+        bestSolution = new boolean[problemSize];
 
         if (maxIterations < 1) {
             throw new IllegalArgumentException("Maximum iterations must be above zero.");
         }
         this.maxIterations = maxIterations;
-
-        currentSolution = new boolean[problemSize];
-        bestSolution = new boolean[problemSize];
     }
 
     @Override
     public String toString() {
-        return "RandomSearch{" + "currentIteration=" + currentIteration + "/" + maxIterations + ", bestFitness=" + bestFitness + "/" + problemSize + '}';
+        return "RandomSearch{" + "Iteration=" + currentIteration + "/" + maxIterations + ", bestFitness=" + bestFitness + "/" + bestSolution.length + '}';
     }
 
-    void run() {
-        for (currentIteration = 0; currentIteration < maxIterations; currentIteration++) {
-            if (bestFitness == problemSize){
-                System.out.println("BEST SOLUTION FOUND!");
-                break;
+    private int calculateFitness(boolean[] solution) {
+        int count = 0;
+        for (boolean b : solution)
+            if (b) count++;
+        return count;
+    }
+
+    private void randomSearch() {
+        boolean[] newSolution = new boolean[bestSolution.length];
+        // Step 1: Increase the iteration count
+        currentIteration++;
+        // Step 2: Generate a random solution and calculate fitness
+        for (int i = 0; i < newSolution.length; i++)
+            newSolution[i] = random.nextBoolean();
+        int newFitness = calculateFitness(newSolution);
+        // Step 3: If the newSolution is better, replace the BestSolution
+        if (newFitness > bestFitness) {
+            System.out.println("New best solution found=" + Arrays.toString(newSolution));
+            bestFitness = newFitness;
+            bestSolution = Arrays.copyOf(newSolution, newSolution.length);
+        }
+    }
+
+    int run() {
+        while (currentIteration < maxIterations) {
+            if (bestFitness == bestSolution.length) { // Check if the best solution is found
+                System.out.println("Best solution Found!");
+                return currentIteration;
             }
-            randomizeCurrentSolution();
-            int sum = calcCurrentFitness();
-            if (sum > bestFitness) {
-                bestSolution = Arrays.copyOf(currentSolution, currentSolution.length);
-                bestFitness = sum;
-            }
+            randomSearch(); // Run 1 iteration of random search
             System.out.println(this);
         }
-        System.out.println("RandomSearch{" + "bestSolution=" + Arrays.toString(bestSolution) + "}");
-    }
-
-    private void randomizeCurrentSolution() {
-        for (int i = 0; i < currentSolution.length; i++) {
-            currentSolution[i] = random.nextBoolean();
-        }
-    }
-
-    private int calcCurrentFitness() {
-        int sum = 0;
-        for (int i = 0; i < currentSolution.length; i++)
-            if (currentSolution[i]) sum++;
-        return sum;
+        return -1; // Best solution not found
     }
 }
