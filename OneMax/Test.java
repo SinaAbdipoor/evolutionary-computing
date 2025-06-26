@@ -15,7 +15,7 @@ public class Test {
         System.out.println("Random Search (100, 1,000):" + randomSearch100.run(false));
         System.out.println("Random Search (200, 1,000):" + randomSearch200.run(false));
         System.out.println("Random Search (500, 1,000):" + randomSearch500.run(false));
-        System.out.println("Random Search (1000, 1,000):" + randomSearch1000.run(false));
+        System.out.println("Random Search (1,000, 1,000):" + randomSearch1000.run(false));
 
         System.out.println();
 
@@ -34,6 +34,6 @@ public class Test {
         System.out.println("Hill Climbing (100, 1,000):" + hillClimbing100.run(false));
         System.out.println("Hill Climbing (200, 1,000):" + hillClimbing200.run(false));
         System.out.println("Hill Climbing (500, 1,000):" + hillClimbing500.run(false));
-        System.out.println("Hill Climbing (1000, 1,000):" + hillClimbing1000.run(false));
+        System.out.println("Hill Climbing (1,000, 1,000):" + hillClimbing1000.run(false));
     }
 }
