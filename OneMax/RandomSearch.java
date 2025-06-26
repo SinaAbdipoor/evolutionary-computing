@@ -9,14 +9,10 @@ class RandomSearch {
     private final Random random = new Random();
 
     public RandomSearch(int problemSize, int maxIterations) {
-        if (problemSize < 1) {
-            throw new IllegalArgumentException("Problem size (n) must be above zero.");
-        }
+        if (problemSize < 1) throw new IllegalArgumentException("Problem size (n) must be above zero.");
         bestSolution = new boolean[problemSize];
 
-        if (maxIterations < 1) {
-            throw new IllegalArgumentException("Maximum iterations must be above zero.");
-        }
+        if (maxIterations < 1) throw new IllegalArgumentException("Maximum iterations must be above zero.");
         this.maxIterations = maxIterations;
     }
 
