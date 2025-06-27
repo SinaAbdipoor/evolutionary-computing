@@ -12,38 +12,68 @@ public class HillClimbing {
     public String toBinary(int number) {
         return Integer.toBinaryString(number);
     }
+    public void printString(Boolean[] arr) {
+        for (int i=0;i < arr.length;i++) {
+            if (arr[i])
+                System.out.print(1);
+            else
+                System.out.print(0);
+        }
+    }
 
     public void iteration() {
         int origin = (int)(Math.random() * len) + 1;
         String goal = toBinary(origin);
+        String plan = toBinary(len);
         int sum = 0;
+        int planLength = plan.length();
         int BinaryLength = goal.length();
 //        System.out.println(goal);
 //        System.out.println(BinaryLength);
-        Boolean[] start = new Boolean[BinaryLength];
-        for (int i=0;i<BinaryLength;i++) {
-            if (String.valueOf(goal.charAt(i)).equals("1")) {
+//        System.out.println(planLength);
+        Boolean[] start = new Boolean[planLength];
+        for (int i=0;i < planLength;i++) {
+            if (i < planLength - BinaryLength)
+                start[i] = false;
+            else if (String.valueOf(goal.charAt(i - (planLength - BinaryLength))).equals("1")) {
                 start[i] = true;
                 sum++;
             }
             else
                 start[i] = false;
         }
-
+        int L_index = 0;
         for (int j = 0;j < iter;j++) {
-            int index = (int)(Math.random() * BinaryLength);
+            if (sum == planLength)
+                break;
+            int index = (int)(Math.random() * planLength);
+            if (j == 0)
+                L_index = index;
+            System.out.print("Iteration #" + j + " - CurrentSolution = ");
+            printString(start);
             if (!start[index]) {
                 start[index] = !start[index];
-                System.out.println("Iteration #" + j + " - CurrentSolution = 001 _ CurrentFitness = " + sum + "\n" +
-                        "- NewSolution = 011 _ NewFitness = " + (sum+1) +" _ Replaced = True");
+                System.out.print("_ CurrentFitness = " + sum + "\n" +
+                        "- NewSolution = ");
+                printString(start);
+                System.out.println(" _ NewFitness = " + (sum+1) +" _ Replaced = True");
                 sum ++;
             }
+//            else if (L_index == index) {
+//                System.out.print("_ CurrentFitness = " + sum + "\n" +
+//                        "- NewSolution = ");
+//                printString(start);
+//                System.out.println(" _ NewFitness = " + sum +" _ Replaced = false");
+//            }
+            else {
+                System.out.print(" _ CurrentFitness = " + sum + "\n" +
+                        "- NewSolution = ");
+                printString(start);
+                System.out.println(" _ NewFitness = " + (sum-1) +" _ Replaced = false");
+            }
+            if (j != 0)
+                L_index = index;
             //print...
         }
-    }
-
-    public String toString() {
-        return "Iteration #" + term + " - CurrentSolution = 001 _ CurrentFitness = 1\n" +
-                "- NewSolution = 011 _ NewFitness = 2 _ Replaced = True";
     }
 }
