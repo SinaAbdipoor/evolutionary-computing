@@ -5,8 +5,10 @@ public class Test {
         int iter = 1000000;
         int len = 100;
 
-        RandomSearch search = new RandomSearch(iter, len);
-        search.iteration();
-        System.out.println(search);
+//        RandomSearch search = new RandomSearch(iter, len);
+//        search.iteration();
+//        System.out.println(search);
+        HillClimbing climb = new HillClimbing(iter, len);
+        climb.iteration();
     }
 }

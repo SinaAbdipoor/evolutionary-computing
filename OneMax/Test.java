@@ -18,22 +18,22 @@ public class Test {
         System.out.println("Random Search (1,000, 1,000):" + randomSearch1000.run(false));
 
         System.out.println();
-
-        HillClimbing hillClimbing5 = new HillClimbing(5, 1000);
-        HillClimbing hillClimbing10 = new HillClimbing(10, 1000);
-        HillClimbing hillClimbing20 = new HillClimbing(20, 1000);
-        HillClimbing hillClimbing50 = new HillClimbing(50, 1000);
-        HillClimbing hillClimbing100 = new HillClimbing(100, 1000);
-        HillClimbing hillClimbing200 = new HillClimbing(200, 1000);
-        HillClimbing hillClimbing500 = new HillClimbing(500, 1000);
-        HillClimbing hillClimbing1000 = new HillClimbing(1000, 1000);
-        System.out.println("Hill Climbing (5, 1,000):" + hillClimbing5.run(false));
-        System.out.println("Hill Climbing (10, 1,000):" + hillClimbing10.run(false));
-        System.out.println("Hill Climbing (20, 1,000):" + hillClimbing20.run(false));
-        System.out.println("Hill Climbing (50, 1,000):" + hillClimbing50.run(false));
-        System.out.println("Hill Climbing (100, 1,000):" + hillClimbing100.run(false));
-        System.out.println("Hill Climbing (200, 1,000):" + hillClimbing200.run(false));
-        System.out.println("Hill Climbing (500, 1,000):" + hillClimbing500.run(false));
-        System.out.println("Hill Climbing (1,000, 1,000):" + hillClimbing1000.run(false));
+//
+//        HillClimbing hillClimbing5 = new HillClimbing(5, 1000);
+//        HillClimbing hillClimbing10 = new HillClimbing(10, 1000);
+//        HillClimbing hillClimbing20 = new HillClimbing(20, 1000);
+//        HillClimbing hillClimbing50 = new HillClimbing(50, 1000);
+//        HillClimbing hillClimbing100 = new HillClimbing(100, 1000);
+//        HillClimbing hillClimbing200 = new HillClimbing(200, 1000);
+//        HillClimbing hillClimbing500 = new HillClimbing(500, 1000);
+//        HillClimbing hillClimbing1000 = new HillClimbing(1000, 1000);
+//        System.out.println("Hill Climbing (5, 1,000):" + hillClimbing5.run(false));
+//        System.out.println("Hill Climbing (10, 1,000):" + hillClimbing10.run(false));
+//        System.out.println("Hill Climbing (20, 1,000):" + hillClimbing20.run(false));
+//        System.out.println("Hill Climbing (50, 1,000):" + hillClimbing50.run(false));
+//        System.out.println("Hill Climbing (100, 1,000):" + hillClimbing100.run(false));
+//        System.out.println("Hill Climbing (200, 1,000):" + hillClimbing200.run(false));
+//        System.out.println("Hill Climbing (500, 1,000):" + hillClimbing500.run(false));
+//        System.out.println("Hill Climbing (1,000, 1,000):" + hillClimbing1000.run(false));
     }
 }
