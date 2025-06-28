@@ -1,0 +1,5 @@
+package Trap;
+
+class HillClimbing {
+    
+}
