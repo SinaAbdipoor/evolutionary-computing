@@ -37,7 +37,6 @@ class HillClimbing {
         while (currentIteration < maxIterations) {
             if (bestFitness == bestSolution.length) // Check if the best solution is found
                 return currentIteration;
-
             hillClimbing(); // Run 1 iteration of hill climbing
             if (debugMode) System.out.println(this);
         }
