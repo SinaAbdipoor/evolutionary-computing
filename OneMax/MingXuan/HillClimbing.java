@@ -9,33 +9,34 @@ public class HillClimbing {
         this.len = len;
     }
 
-    public String toBinary(int number) {
-        return Integer.toBinaryString(number);
-    }
-    public void printString(Boolean[] arr) {
-        for (int i=0;i < arr.length;i++) {
-            if (arr[i])
-                System.out.print(1);
-            else
-                System.out.print(0);
-        }
-    }
+//    public String toBinary(int number) {
+//        return Integer.toBinaryString(number);
+//    }
+//    public void printString(Boolean[] arr) {
+//        for (int i=0;i < arr.length;i++) {
+//            if (arr[i])
+//                System.out.print(1);
+//            else
+//                System.out.print(0);
+//        }
+//    }
 
     public void iteration() {
         int origin = (int)(Math.random() * len) + 1;
-        String goal = toBinary(origin);
-        String plan = toBinary(len);
+//        String goal = toBinary(origin);
+//        String plan = toBinary(len);
         int sum = 0;
-        int planLength = plan.length();
-        int BinaryLength = goal.length();
+//        int planLength = plan.length();
+//        int BinaryLength = goal.length();
 //        System.out.println(goal);
 //        System.out.println(BinaryLength);
 //        System.out.println(planLength);
-        Boolean[] start = new Boolean[planLength];
-        for (int i=0;i < planLength;i++) {
-            if (i < planLength - BinaryLength)
-                start[i] = false;
-            else if (String.valueOf(goal.charAt(i - (planLength - BinaryLength))).equals("1")) {
+        Boolean[] start = new Boolean[len];
+        for (int i=0;i < len;i++) {
+//            if (i < planLength - BinaryLength)
+//                start[i] = false;
+//            else
+              if (String.valueOf(goal.charAt(i - (planLength - BinaryLength))).equals("1")) {
                 start[i] = true;
                 sum++;
             }
