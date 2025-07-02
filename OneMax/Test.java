@@ -1,4 +1,6 @@
-public class Test {
+package OneMax;
+
+class Test {
     public static void main(String[] args) {
         RandomSearch randomSearch5 = new RandomSearch(5, 1000);
         RandomSearch randomSearch10 = new RandomSearch(10, 1000);
