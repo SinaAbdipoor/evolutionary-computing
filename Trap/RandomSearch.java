@@ -20,7 +20,7 @@ class RandomSearch {
 
     @Override
     public String toString() {
-        return "RandomSearch{" + "Iteration=" + currentIteration + "/" + maxIterations + ", bestFitness=" + bestFitness + "/" + bestSolution.length + '}';
+        return "RandomSearch{" + "Iteration=" + currentIteration + "/" + maxIterations + ", bestFitness=" + bestFitness + "/" + (bestSolution.length + 1) + '}';
     }
 
     private int calculateFitness(boolean[] solution) {
@@ -34,7 +34,7 @@ class RandomSearch {
 
     int run(boolean debugMode) {
         while (currentIteration < maxIterations) {
-            if (bestFitness == bestSolution.length) // Check if the best solution is found
+            if (bestFitness == bestSolution.length + 1) // Check if the best solution is found
                 return currentIteration;
             randomSearch(); // Run 1 iteration of random search
             if (debugMode) System.out.println(this);

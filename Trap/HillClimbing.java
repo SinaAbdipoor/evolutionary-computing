@@ -20,7 +20,7 @@ class HillClimbing {
 
     @Override
     public String toString() {
-        return "HillClimbing{" + "Iteration=" + currentIteration + "/" + maxIterations + ", bestFitness=" + bestFitness + "/" + bestSolution.length + '}';
+        return "HillClimbing{" + "Iteration=" + currentIteration + "/" + maxIterations + ", bestFitness=" + bestFitness + "/" + (bestSolution.length + 1) + '}';
     }
 
     private int calculateFitness(boolean[] solution) {
@@ -39,7 +39,7 @@ class HillClimbing {
         bestFitness = calculateFitness(bestSolution);
         // Step 2: Start climbing
         while (currentIteration < maxIterations) {
-            if (bestFitness == bestSolution.length) // Check if the best solution is found
+            if (bestFitness == bestSolution.length + 1) // Check if the best solution is found
                 return currentIteration;
             hillClimbing(); // Run 1 iteration of hill climbing
             if (debugMode) System.out.println(this);
