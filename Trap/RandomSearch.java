@@ -27,7 +27,7 @@ class RandomSearch {
         int count = 0;
         for (boolean b : solution)
             if (b) count++;
-        if (count == solution.length && count == 0)
+        if (count == 0)
             return solution.length+1;
         return count;
     }
