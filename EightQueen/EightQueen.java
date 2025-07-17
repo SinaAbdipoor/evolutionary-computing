@@ -4,14 +4,13 @@ import java.util.Arrays;
 
 class EightQueen {
     private final int[] board;
-
-    EightQueen() {
-        board = new int[8];
+    EightQueen(int[] board) {
+        this.board = board;
     }
 
-    int[] getBoard() {
-        return board;
-    }
+//    int[] getBoard() {
+//        return board;
+//    }
 
     @Override
     public String toString() {
@@ -20,19 +19,20 @@ class EightQueen {
                 '}';
     }
 
-    void printBoard() {
+//    void printBoard() {
+//
+//    }
 
-    }
-
-    void placeQueen(int column, int row) {
-        board[column] = row;
-    }
+//    void placeQueen(int column, int row) {
+//        board[column] = row;
+//    }
 
     int calcCost() {
         int cost = 0;
         for (int col = 0; col < board.length; col++) {
             for (int j = (col + 1); j < board.length; j++) {
-                if (Math.abs(board[col] - board[j]) == Math.abs(col - j)) cost++;
+                if (Math.abs(board[j] - board[col]) == Math.abs(j - col)) cost++;
+                if (board[col] == board[j]) cost++;
             }
         }
         return cost;
