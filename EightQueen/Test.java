@@ -1,22 +1,18 @@
 package EightQueen;
 
 public class Test {
-    public static void main(String[] args){
-        int cost;
-        RandomSearch randomSearch500 = new RandomSearch(8, 500);
-        RandomSearch randomSearch1000 = new RandomSearch(8, 1000);
-        RandomSearch randomSearch10000 = new RandomSearch(8, 10000);
-        RandomSearch randomSearch100000 = new RandomSearch(8, 100000);
-        System.out.println("Random Search(500):" + randomSearch500.run(false));
-        System.out.println("Random Search(1000):" + randomSearch1000.run(false));
-        System.out.println("Random Search(10000):" + randomSearch10000.run(false));
-        System.out.println("Random Search(100000):" + randomSearch100000.run(false));
-
-        HillClimbing hillClimbing500 = new HillClimbing(8, 500);
-        HillClimbing hillClimbing1000 = new HillClimbing(8, 1000);
-        HillClimbing hillClimbing10000 = new HillClimbing(8, 10000);
-        System.out.println("Hill Climbing(500):" + hillClimbing500.run(false));
-        System.out.println("Hill Climbing(1000):" + hillClimbing1000.run(false));
-        System.out.println("Hill Climbing(10000):" + hillClimbing10000.run(true));
+    public static void main(String[] args) {
+        System.out.println("Random Search(5):" + new RandomSearch(5).run(false));
+        System.out.println("Random Search(10):" + new RandomSearch(10).run(false));
+        System.out.println("Random Search(20):" + new RandomSearch(20).run(false));
+        System.out.println("Random Search(50):" + new RandomSearch(50).run(false));
+        System.out.println("Random Search(100):" + new RandomSearch(100).run(false));
+        System.out.println("Random Search(200):" + new RandomSearch(200).run(false));
+        System.out.println("Random Search(500):" + new RandomSearch(500).run(false));
+        System.out.println("Random Search(1,000):" + new RandomSearch(1000).run(false));
+        System.out.println("Random Search(2,000):" + new RandomSearch(2000).run(false));
+        System.out.println("Random Search(5,000):" + new RandomSearch(5000).run(false));
+        System.out.println("Random Search(10,000):" + new RandomSearch(10000).run(false));
+        System.out.println("Random Search(100,000):" + new RandomSearch(100000).run(false));
     }
 }

@@ -3,38 +3,49 @@ package EightQueen;
 import java.util.Arrays;
 
 class EightQueen {
-    private final int[] board;
-    EightQueen(int[] board) {
-        this.board = board;
-    }
+    private int[] board;
 
-//    int[] getBoard() {
-//        return board;
-//    }
+    EightQueen() {
+        board = new int[8];
+    }
 
     @Override
     public String toString() {
-        return "EightQueen{" +
-                "board=" + Arrays.toString(board) +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        int size = board.length;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (board[j] == i) sb.append(" Q ");
+                else sb.append(" . ");
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 
-//    void printBoard() {
-//
-//    }
+    int getBoardLength() {
+        return board.length;
+    }
 
-//    void placeQueen(int column, int row) {
-//        board[column] = row;
-//    }
+    void placeQueen(int column, int row) {
+        int size = getBoardLength();
+        if (row < 0 || row >= size)
+            throw new IllegalArgumentException("Row must be between 0 and " + (board.length - 1) + ".");
+        board[column] = row;
+    }
 
     int calcCost() {
         int cost = 0;
-        for (int col = 0; col < board.length; col++) {
-            for (int j = (col + 1); j < board.length; j++) {
-                if (Math.abs(board[j] - board[col]) == Math.abs(j - col)) cost++;
-                if (board[col] == board[j]) cost++;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = i + 1; j < board.length; j++) {
+                if (board[i] == board[j]) cost++; // same row
+                if (Math.abs(board[i] - board[j]) == Math.abs(i - j)) cost++; // same diagonal
             }
         }
         return cost;
+    }
+
+    void copyFrom(EightQueen newBoard) {
+        this.board = Arrays.copyOf(newBoard.board, board.length);
     }
 }
