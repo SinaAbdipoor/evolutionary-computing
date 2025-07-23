@@ -5,7 +5,7 @@ import java.util.Random;
 class RandomSearch {
     private int currentIteration = 0;
     private final int maxIterations;
-    private EightQueen board;
+    private final EightQueen board;
     private int cost;
 
     RandomSearch(int maxIterations) {
