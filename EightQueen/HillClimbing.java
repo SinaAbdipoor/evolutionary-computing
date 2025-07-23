@@ -5,11 +5,8 @@ import java.util.Random;
 class HillClimbing {
     private int currentIteration = 0;
     private final int maxIterations;
-    private EightQueen board;
-    private EightQueen newBoard;
-    private EightQueen currentBoard;
+    private final EightQueen board;
     private int cost;
-    private Random random = new Random();
 
     HillClimbing(int maxIterations) {
         if (maxIterations < 1) throw new IllegalArgumentException("Maximum iterations must be above zero.");
@@ -26,36 +23,29 @@ class HillClimbing {
     }
 
     private void randomizeBoard(EightQueen Board) {
+        Random random = new Random();
         int size = board.getBoardLength();
         for (int col = 0; col < size; col++) {
             Board.placeQueen(col, random.nextInt(size));
         }
     }
 
-    private void climbTo(EightQueen Board) {
-        int size = Board.getBoardLength();
-        int newColumn = random.nextInt(size);
-        Board.placeQueen(newColumn, random.nextInt(size));
-    }
-
     private void hillClimbing() {
         currentIteration++;
-        currentBoard = newBoard;
-        climbTo(newBoard);
+        EightQueen newBoard = new EightQueen();
+        newBoard.copyFrom(board);
+        int size = newBoard.getBoardLength();
+        Random random = new Random();
+        newBoard.placeQueen(random.nextInt(size), random.nextInt(size));
         int newCost = newBoard.calcCost();
-        if (newCost < cost) {
+        if (newCost <= cost) {
             cost = newCost;
             board.copyFrom(newBoard);
-        }
-        else {
-            newBoard = currentBoard;
         }
     }
 
 
     int run(boolean debugMode) {
-        newBoard = new EightQueen();
-        randomizeBoard(newBoard);
         while (currentIteration < maxIterations) {
             if (cost == 0) // Check if the best solution is found
                 return currentIteration;
