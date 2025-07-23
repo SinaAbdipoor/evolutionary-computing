@@ -8,6 +8,8 @@ class HillClimbing {
     private final EightQueen board;
     private int cost;
 
+    private final Random random = new Random();
+
     HillClimbing(int maxIterations) {
         if (maxIterations < 1) throw new IllegalArgumentException("Maximum iterations must be above zero.");
         this.maxIterations = maxIterations;
@@ -22,11 +24,10 @@ class HillClimbing {
         return "HillClimbing{" + "currentIteration=" + currentIteration + ", maxIterations=" + maxIterations + ", board=\n" + board + ", cost=" + cost + '}';
     }
 
-    private void randomizeBoard(EightQueen Board) {
-        Random random = new Random();
+    private void randomizeBoard(EightQueen board) {
         int size = board.getBoardLength();
         for (int col = 0; col < size; col++) {
-            Board.placeQueen(col, random.nextInt(size));
+            board.placeQueen(col, random.nextInt(size));
         }
     }
 
@@ -35,7 +36,6 @@ class HillClimbing {
         EightQueen newBoard = new EightQueen();
         newBoard.copyFrom(board);
         int size = newBoard.getBoardLength();
-        Random random = new Random();
         newBoard.placeQueen(random.nextInt(size), random.nextInt(size));
         int newCost = newBoard.calcCost();
         if (newCost <= cost) {

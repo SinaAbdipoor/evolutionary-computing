@@ -17,7 +17,7 @@ public class Test {
 
         System.out.println("Hill Climbing(5):" + new HillClimbing(5).run(false));
         System.out.println("Hill Climbing(10):" + new HillClimbing(10).run(false));
-        System.out.println("Hill Climbing(20):" + new HillClimbing(20).run(true));
+        System.out.println("Hill Climbing(20):" + new HillClimbing(20).run(false));
         System.out.println("Hill Climbing(50):" + new HillClimbing(50).run(false));
         System.out.println("Hill Climbing(100):" + new HillClimbing(100).run(false));
         System.out.println("Hill Climbing(200):" + new HillClimbing(200).run(false));
