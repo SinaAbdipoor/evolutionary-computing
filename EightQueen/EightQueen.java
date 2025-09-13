@@ -45,6 +45,14 @@ class EightQueen {
         return cost;
     }
 
+    public int[] getBoard() {
+        return board;
+    }
+
+    public void setBoard(int[] theBoard) {
+        this.board = theBoard;
+    }
+
     void copyFrom(EightQueen newBoard) {
         this.board = Arrays.copyOf(newBoard.board, board.length);
     }
